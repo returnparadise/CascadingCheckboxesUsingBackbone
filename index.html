@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>cascade checkboxes</title>
+	<script type="text/javascript" id="jqueryjs" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" id="underscorejs" src="underscore-min.js"></script>
+	<script type="text/javascript" id="backbonejs" src="backbone-min.js"></script>
+	<script type="text/javascript" id="mainjs" src="main.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var riskPillars = ["Home", "Job", "Work", "Food"];
+		var riskPillarsCheck = {"Home":true, "Job":false, "Work":true, "Food":false};
+		var subCategories = ["Home1", "Home2", "Home3", "Job1", "Job2", "Job3", "Work1", "Work2", "Work3", "Food1", "Food2", "Food3", "Other"];
+		var subCategoriesCheck = {"Home1":false, "Home2":false, "Home3":false, "Job1":false, "Job2":false, "Job3":false, "Work1":false, "Work2":false, "Work3":false, "Food1":false, "Food2":false, "Food3":false, "Other":false};
+		var groupCategories = {"Home":["Home1", "Home2", "Home3", "Other"], 
+			"Job":["Job1", "Job2", "Job3", "Other"],
+			"Work": ["Work1", "Work2", "Work3", "Other"],
+			"Food": ["Food1", "Food2", "Food3", "Other"]
+		};
+	</script>
+	<SCRIPT TYPE="text/template" id="pillarItem-template">
+		<div class="pillarItem">
+			<input type="checkbox" class="check" value="<%=title%>" <%=checked?'checked="checked"':''%>/>
+			<label class="content"><%=title%></label>
+		</div>
+	</SCRIPT>
+	<SCRIPT TYPE="text/template" id="subcategoryItem-template">
+		<div class="subcategoryItem" style="display:<%=visible?'block':'none'%>;">
+			<input type="checkbox" class="check" value="<%=title%>" <%=checked?'checked="checked"':''%>/>
+			<label class="content"><%=title%></label>
+		</div>
+	</SCRIPT>
+	<SCRIPT TYPE="text/javascript">
+		(function ($) {
+			$(function(){
+				backbonePrepare();
+				//allPillars = new PillarsCollection();
+
+				//var pillarItemTmpl = _.template($('#pillarItem-template').html());
+				//allPillars.each(function(o){$(pillarItemTmpl(o.attributes)).appendTo('#wr');});
+				pillars = new PillarsView();
+			});
+		})(jQuery);
+	</SCRIPT>
+	<div id="wr">
+		
+	</div>
+	<div id="ct">
+		
+	</div>
+</body>
+</html>
